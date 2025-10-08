@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF--8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredictionMart | Trade the Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables and Reset --- */
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E1E;
+            --primary-text-color: #FFFFFF;
+            --secondary-text-color: #A0A0A0;
+            --accent-color: #4DE4B2;
+            --accent-hover-color: #62f5c2;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--secondary-text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+
+        /* --- General Styles --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary-text-color);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover-color);
+        }
+
+        /* --- Header & Navigation --- */
+        .site-header {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-text-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-text-color);
+        }
+
+
+        /* --- Section Styles --- */
+        .hero-section {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .mission-section {
+            background-color: var(--surface-color);
+            text-align: center;
+        }
+
+        .mission-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        .personas-section h2+p {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .persona-card {
+            background-color: var(--surface-color);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .how-it-works-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .concept-image {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .concept ol {
+            padding-left: 20px;
+        }
+
+        .step-card {
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* --- Markets (Examples) Section Styles --- */
+        .markets-section .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: -15px auto 40px;
+        }
+
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .market-card {
+            background-color: var(--surface-color);
+            border: 1px solid #333;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* This is key to making the image corners round */
+        }
+
+        .market-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* Prevents image from stretching */
+        }
+
+        .market-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .market-question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            flex-grow: 1; 
+        }
+
+        .trade-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            flex: 1;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border: 2px solid #444;
+            transition: border-color 0.3s ease;
+        }
+
+        .option.active {
+            border-color: var(--accent-color);
+        }
+
+        .option-label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--secondary-text-color);
+            font-weight: 600;
+        }
+
+        .option-price {
+            display: block;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-text-color);
+        }
+
+        .trade-summary {
+            margin-bottom: 20px;
+        }
+
+        .trade-summary p, .payout p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .payout {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .payout strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+        }
+
+        /* --- Animations --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .nav-links { display: none; }
+
+            .personas-grid, .markets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-it-works-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">PredictionMart</div>
+                <ul class="nav-links">
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="#" class="btn btn-primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section fade-in-section">
+            <div class="container">
+                <h1>Trade the Future.</h1>
+                <p class="subtitle">PredictionMart is a regulated marketplace where you can trade directly on the outcome of real-world events. From economic milestones and tech breakthroughs to political races, we turn your knowledge into actionable investments.</p>
+            </div>
+        </section>
+
+        <section id="mission" class="mission-section fade-in-section">
+             <div class="container">
+                <h2>Our Mission</h2>
+                <p>To empower everyone to forecast the future and hedge against risk by providing a transparent, accessible, and data-driven market for event contracts. We believe the future is knowable, and collective intelligence is the key to unlocking it.</p>
+            </div>
+        </section>
+
+        <section id="personas" class="personas-section fade-in-section">
+            <div class="container">
+                <h2>Who Is This For?</h2>
+                <p>PredictionMart is designed for anyone who wants to put their insights to the test.</p>
+                <div class="personas-grid">
+                    <div class="persona-card">
+                        <h3>The Data-Driven Investor</h3>
+                        <p>You're an analyst or trader who uses data to find an edge. You use our markets to hedge portfolios or capitalize on unique economic insights.</p>
+                    </div>
+                    <div class="persona-card">
+                        <h3>The Tech Futurist</h3>
+                        <p>You live and breathe technology, from AI developments to product launches. You
